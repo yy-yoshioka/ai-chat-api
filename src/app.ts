@@ -3,6 +3,9 @@ import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import authRoutes from './routes/auth';
+import faqRoutes from './routes/faqs';
+import chatRoutes from './routes/chat';
+import adminRoutes from './routes/admin';
 import { prisma } from './lib/prisma';
 
 // Load environment variables
@@ -32,6 +35,9 @@ app.get('/', (_req, res) => {
 
 // Auth routes - add /api prefix
 app.use('/auth', authRoutes);
+app.use('/faqs', faqRoutes);
+app.use('/chat', chatRoutes);
+app.use('/admin', adminRoutes);
 
 // For checking that Prisma is connected
 app.get('/debug/db', async (_req, res) => {

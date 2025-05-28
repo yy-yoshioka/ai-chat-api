@@ -37,7 +37,7 @@ router.post('/login', async (req: Request, res: Response) => {
     }
 
     // Generate JWT and set cookie
-    signToken({ id: user.id, email: user.email }, res);
+    signToken({ id: user.id, email: user.email, isAdmin: user.isAdmin }, res);
 
     // Return user data (excluding password)
     const { password: _password, ...userData } = user;
@@ -85,7 +85,7 @@ router.post('/signup', async (req: Request, res: Response) => {
     });
 
     // Generate JWT and set cookie
-    signToken({ id: user.id, email: user.email }, res);
+    signToken({ id: user.id, email: user.email, isAdmin: user.isAdmin }, res);
 
     // Return user data (excluding password)
     const { password: _password, ...userData } = user;
