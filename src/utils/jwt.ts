@@ -5,6 +5,7 @@ import { Response } from 'express';
 export interface UserPayload {
   id: string;
   email: string;
+  isAdmin?: boolean;
 }
 
 // Sign JWT token and store in HTTP-Only Cookie
@@ -14,7 +15,7 @@ export const signToken = (user: UserPayload, res: Response): string => {
   }
 
   const token = jwt.sign(
-    { id: user.id, email: user.email },
+    { id: user.id, email: user.email, isAdmin: user.isAdmin },
     process.env.JWT_SECRET,
     { expiresIn: '7d' }
   );

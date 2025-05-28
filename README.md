@@ -153,6 +153,28 @@ fetch('/auth/me', {
 
 ---
 
+## 📚 FAQ, Chat, and Admin Endpoints
+
+### FAQ
+
+- `GET /faqs` - List FAQs (supports `page` and `limit` query params)
+- `GET /faqs/:id` - Retrieve a single FAQ
+- `GET /faqs/search?keyword=foo` - Keyword search
+- `POST /faqs` - Create FAQ (admin only)
+- `PUT /faqs/:id` - Update FAQ (admin only)
+- `DELETE /faqs/:id` - Delete FAQ (admin only)
+
+### Chat
+
+- `POST /chat` - Ask a question (requires auth). The server searches FAQs and calls the OpenAI API before saving the chat log.
+
+### Admin
+
+- `GET /admin/chat-logs` - List all chat logs
+- `GET /admin/report/chat-logs` - Simple aggregated report
+
+---
+
 ## 💡 Pre-commit Hook
 
 This template uses **Husky** and **lint-staged** to lint & format files before commits.
